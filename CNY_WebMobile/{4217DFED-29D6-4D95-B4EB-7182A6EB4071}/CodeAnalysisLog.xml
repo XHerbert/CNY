@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="d:\program files\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\Administrator\AppData\Local\Temp\tmp43B.tmp.cadir\bin\App_Code.dll">
+   <Modules>
+    <Module Name="app_code.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="SQL" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ExcuteProcedureNonquery(System.String,System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\App_Code" File="SQL.cs" Line="52">传递给 'SQL.ExcuteProcedureNonquery(string, string, params SqlParameter[])' 中的 'SqlCommand.SqlCommand(string)' 的查询字符串可能包含以下变量 'procedureName'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExcuteProcedureQuery(System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\App_Code" File="SQL.cs" Line="135">传递给 'SQL.ExcuteProcedureQuery(string, params SqlParameter[])' 中的 'SqlCommand.SqlCommand(string)' 的查询字符串可能包含以下变量 'procedureName'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExcuteProcedureQueryWithOutput(System.String,System.String,System.Int32&amp;,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\App_Code" File="SQL.cs" Line="95">传递给 'SQL.ExcuteProcedureQueryWithOutput(string, string, out int, params SqlParameter[])' 中的 'SqlCommand.SqlCommand(string)' 的查询字符串可能包含以下变量 'procedureName'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExcuteProcedureScalar(System.String,System.Data.SqlClient.SqlParameter[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\App_Code" File="SQL.cs" Line="26">传递给 'SQL.ExcuteProcedureScalar(string, params SqlParameter[])' 中的 'SqlCommand.SqlCommand(string)' 的查询字符串可能包含以下变量 'procedureName'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetIDs(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\App_Code" File="SQL.cs" Line="184">传递给 'SQL.GetIDs(string)' 中的 'SqlCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'name'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Login(System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\App_Code" File="SQL.cs" Line="200">传递给 'SQL.Login(string, string)' 中的 'SqlCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'uname', 'pass'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\Administrator\AppData\Local\Temp\tmp43B.tmp.cadir\bin\App_Web_udeigpep.dll">
+   <Modules>
+    <Module Name="app_web_udeigpep.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="InitButtonHandler" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ProcessRequest(System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\server" File="InitButtonHandler.ashx" Line="23">传递给 'InitButtonHandler.ProcessRequest(HttpContext)' 中的 'SqlDataAdapter.SqlDataAdapter(string, SqlConnection)' 的查询字符串可能包含以下变量 'cmd.CommandText'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="server_ButtonManager" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Button1_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\server" File="ButtonManager.aspx.cs" Line="62">传递给 'server_ButtonManager.Button1_Click(object, EventArgs)' 中的 'SqlCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'this.TextBox1.Text'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#buttonContentChangeEventHandler" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">将 'server_ButtonManager.ButtonContentChangeEventHandler' 的第一个参数声明为一个名为“sender”的对象。</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">将 'server_ButtonManager.ButtonContentChangeEventHandler' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="server_ChangeText" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#alter_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\server" File="ChangeText.aspx.cs" Line="63">传递给 'server_ChangeText.alter_Click(object, EventArgs)' 中的 'SqlCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'this.con.Value', 'this.hideId.Value'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SubmitDataHandler" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ProcessRequest(System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\server" File="SubmitDataHandler.ashx" Line="34">方法 'SubmitDataHandler.ProcessRequest(HttpContext)' 调用 'string.Format(string, object, object)' 并且不为参数 "2" 提供格式项。提供的格式字符串为:“"select * from tb_Record where userNum=\'{0}\' and flag=0"”</Issue>
+            </Message>
+            <Message TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-11-29 14:51:14Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\server" File="SubmitDataHandler.ashx" Line="35">传递给 'SubmitDataHandler.ProcessRequest(HttpContext)' 中的 'SqlCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'context.Request.Form["num"]'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\0000000000\CNY_WebMobile\server" File="SubmitDataHandler.ashx" Line="53">传递给 'SubmitDataHandler.ProcessRequest(HttpContext)' 中的 'SqlCommand.CommandText.set(string)' 的查询字符串可能包含以下变量 'context.Request.Form["num"]', 'context.Request.Form["btnText"]'。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009">
+   <Name>正确声明事件处理程序</Name>
+   <Description>按照约定，.NET 事件有两个参数，分别用于指定事件发送方和事件数据。事件处理程序签名应遵循以下形式: void MyEventHandler(object sender, EventArgs e)。“sender”参数的类型始终是 System.Object，即使该参数可能使用更具体的类型。“e”参数的类型始终是 System.EventArgs。不提供事件数据的事件应使用 System.EventHandler 委托类型。事件处理程序返回 void 以便将每个事件发送给多个目标方法。目标返回的任何值在第一次调用之后将会丢失。</Description>
+   <Resolution Name="First">将 {0} 的第一个参数声明为一个名为“sender”的对象。</Resolution>
+   <Resolution Name="Second">将 {0} 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182133.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="为格式化方法提高正确的参数" Category="Microsoft.Usage" CheckId="CA2241">
+   <Name>为格式化方法提高正确的参数</Name>
+   <Description>为 String.Format 调用提供正确的参数数量。</Description>
+   <Resolution Name="MissingFormatItem">方法 {0} 调用 {1} 并且不为参数 {2} 提供格式项。提供的格式字符串为:“{3}”</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182361.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="检查 SQL 查询是否存在安全漏洞" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>检查 SQL 查询是否存在安全漏洞</Name>
+   <Description>通过用户输入生成的 SQL 命令字符串容易受到 SQL 注入式攻击。Microsoft SQL Server 和其他数据库服务器支持存储过程和参数化 SQL 查询，这将降低受到注入式攻击的风险。</Description>
+   <Resolution Name="WithNonLiterals">传递给 {1} 中的 {0} 的查询字符串可能包含以下变量 {2}。如果其中的任意变量可能来自用户输入，请考虑使用存储过程或参数化 SQL 查询，而不是通过字符串串联来生成查询。</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">类别</String>
+  <String Key="Certainty">确定性</String>
+  <String Key="CollapseAll">全部折叠</String>
+  <String Key="CheckId">检查 ID</String>
+  <String Key="Error">错误</String>
+  <String Key="Errors">错误</String>
+  <String Key="ExpandAll">全部展开</String>
+  <String Key="Help">帮助</String>
+  <String Key="Line">行</String>
+  <String Key="Messages">消息</String>
+  <String Key="LocationNotStoredInPdb">[位置未存储在 Pdb 中]</String>
+  <String Key="Project">项目</String>
+  <String Key="Resolution">解析</String>
+  <String Key="Rule">规则</String>
+  <String Key="RuleFile">规则文件</String>
+  <String Key="RuleDescription">规则说明</String>
+  <String Key="Source">源</String>
+  <String Key="Status">状态</String>
+  <String Key="Target">目标</String>
+  <String Key="Warning">警告</String>
+  <String Key="Warnings">警告</String>
+  <String Key="ReportTitle">代码分析报告</String>
+ </Localized>
+</FxCopReport>

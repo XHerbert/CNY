@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>欢迎报名CNY超市</title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+    <link href="assets/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="server/css/datepicker.css" rel="stylesheet" />
+    <style type="text/css" >
+        .t_tb th{
+            color:darkgoldenrod;
+            font-weight:bold;
+        }
+        .t_tb tr{
+            color:yellow;
+        }
+        table button{
+            /*height:20px;*/
+           font-size:smaller;
+           /*width:30px;*/
+        }
+        .c2{
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .c2 p{
+            line-height:1.5em;
+            color:#a3f28d;
+             text-align: center;
+        }
+
+
+    </style>
+
+    <script src="js/dateLib.js"></script>
+    <link rel="stylesheet" href="assets/css/css2.css">
+</head>
+<body onload="Init()">
+    <div class="c">
+        <p id="zone">
+            <!--<span>区域选择</span><select id="un" class="btn-block" ></select>-->
+        </p>
+        <p id="CNY">
+            <!--<span>超市选择</span><input type="date" placeholder="请输入登录密码" id="pw" class="btn-block" />-->
+        </p>
+        <p id="date">
+            <!--<span>日期选择</span><input type="text" id="pw" class="btn-block form-control  date form_date" data-date-format="yyyy-mm-dd"/> <!--col-md-5-->
+            <span>日期选择</span><select onchange="dateSelect()" id="pw" class="btn-block form-control  date form_date" data-date-format="yyyy-mm-dd">
+                                             <!--<option value="2016-1-29">2016-1-29</option>
+                                             <option value="2015-12-2">2015-12-2</option>
+                                             <option value="2015-12-3">2015-12-3</option>
+                                             <option value="2015-12-4">2015-12-4</option>
+                                             <option value="2015-12-5">2015-12-5</option>
+                                             <option value="2015-12-6">2015-12-6</option>
+                                             <option value="2015-12-7">2015-12-7</option>-->
+
+                                 <option value="2016-1-29">2016-1-29</option>
+                                 <option value="2016-1-30">2016-1-30</option>
+                                 <option value="2016-1-31">2016-1-31</option>
+                                 <option value="2016-2-1">2016-2-1</option>
+                                 <option value="2016-2-2">2016-2-2</option>
+                                 <option value="2016-2-3">2016-2-3</option>
+                                 <option value="2016-2-4">2016-2-4</option>
+                                 <option value="2016-2-5">2016-2-5</option>
+                                 <option value="2016-2-6">2016-2-6</option>
+                               </select>
+        </p>
+    </div>
+    <div class="c2"><p>剩余可报名次数：<span id="leftC"></span>/<span id="a_c"></span>次</p></div>
+    <div id="tableContainer"></div>
+    <div class="b" id="btn_c">
+        <p><button id="bm" class="btn btn-danger btn-large btn2 btn-block" type="button">2016&nbsp;&nbsp;CNY&nbsp;&nbsp;MIT&nbsp;&nbsp;报名</button></p>
+    </div>
+
+    <div class="div-a">
+        <div class="div-b">
+            <p></p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/JavaScript.js"></script>
+    <script type="text/javascript" src="js/InitalTable.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/jquery/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <!--<script type="text/javascript">
+        window.onload = Init;
+    </script>
+     <script type="text/javascript">
+
+	$('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0,
+		format: 'yyyy-mm-dd',
+		todayBtn: false,
+		startDate: '2015-12-1',
+        endDate:'2015-12-7'
+    });
+        $('#pw').datetimepicker({
+            format: 'yyyy-mm-dd'
+        });
+    </script>-->
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-image:url(../img/backgrounds/sendname.jpg);
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size:cover;
+    -moz-background-size:cover;
+    -webkit-background-size:cover;
+    /*
+    background:url(../img/backgrounds/bg.jpg) no-repeat center top;
+    background-size:100% auto;
+    background-image: url('../img/backgrounds/bg.jpg');
+    background-repeat:repeat-x no-repeat repeat-y no-repeat;*/
+}
+.a{
+    color:black;
+    font-family: '黑体',Arial, sans-serif;
+    text-align:center;
+    font-size:48px;
+    margin-top:90px;
+    height:50px;
+}
+
+
+.b p{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+#un,#mar,#inputdate,#pw,#bh{
+    width:63%;
+    height:30px;
+    display:inline;
+    margin-left:3%;
+}
+.c{
+    width:95%;
+    margin-left:auto;
+    margin-top:50%;
+}
+#bm{width:93%;margin:50px auto}
+.div-a{ width:220px;height:116px;padding:10px;margin:-170px auto;}
+.div-b{ background:#000;width:200px;height:50px;padding:5px;color:#F00;
+filter:alpha(Opacity=80);-moz-opacity:0.8;opacity: 0.8}
+
+.div-b p{text-align:center;margin:auto auto;font-size:medium;line-height:1.5em;}
+.c p span {
+    font-family:'微软雅黑','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:x-large;
+    color:darkgrey;
+}
+
+#change_t{
+    width:230px;
+    height:100px;
+    background-color:#808080;
+    filter:alpha(Opacity=90);-moz-opacity:0.9;opacity: 0.9;
+    margin:auto auto;
+    padding:20px ;
+}
+th{
+    border:solid  1px black;
+}
+td{
+    border-bottom:dotted 1px red;
+}
+#con{height:32px;line-height:2em;margin:10px auto;}
+#tableContainer{
+    width:95%;
+    margin:auto auto;
+}
+table{
+    font-size:small;
+}
