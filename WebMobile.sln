@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CNY_WebMobile", ".", "{4217DFED-29D6-4D95-B4EB-7182A6EB4071}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CNY", ".", "{4217DFED-29D6-4D95-B4EB-7182A6EB4071}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_1507"
-		Debug.AspNetCompiler.PhysicalPath = "..\CNY_WebMobile\"
+		Debug.AspNetCompiler.PhysicalPath = "..\CNY\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1507\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_1507"
-		Release.AspNetCompiler.PhysicalPath = "..\CNY_WebMobile\"
+		Release.AspNetCompiler.PhysicalPath = "..\CNY\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1507\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "1507"
-		SlnRelativePath = "..\CNY_WebMobile\"
+		SlnRelativePath = "..\CNY\"
 	EndProjectSection
 EndProject
 Global

@@ -7,6 +7,12 @@ $(document).ready(
     $(".div-a").hide()
 );
 
+
+$(document).ready(
+    //$(".btn-sm").css("display", "none")
+    $(".btn-sm").addClass("hideBtn")
+);
+
 //$(document).ready(function () {
 //    var date = $("#pw").val();
 //    var curMarket = $("#mar").val();
