@@ -1,0 +1,17 @@
+*.suo
+Catcher.sln.ide
+*.pdb
+*.dll
+*.txt
+*.cache
+*.exe
+*.user
+.vs/*
+*.publishproj
+Catcher/bin/debug/*
+Catcher/obj/debug/*
+API Events/obj/*
+Catcher/App.config
+DataModel/obj/*
+
+
