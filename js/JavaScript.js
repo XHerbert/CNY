@@ -1,4 +1,5 @@
-﻿/// <reference path="../" />
+﻿
+/// <reference path="../" />
 /// <reference path="jquery.js" />
 //var time1 = new Date().Format("yyyy-MM-dd");
 
@@ -64,6 +65,52 @@ $(document).ready(
         });
     })
     );
+
+
+//查询
+$(document).ready(
+    $("#bmList").click(function () {
+        //取值
+        var zone = $("#un").val();
+        var mar = $("#mar").val();
+        var dt = $("#pw").val();
+
+        //发送数据
+        //var data = { "zid": zone, "mid": mar, "date": dt };
+        var data = "zid:" + zone + "&mid:" + mar + "&date:" + dt;
+        //alert(data);
+        var url = "../CJList.html?" + data;
+        //alert(url);
+        window.location.href = url;
+        //  ../CJList.html?zid:1&mid:9&date:2016-1-29
+        
+}));
+
+function ListLoad() {
+    var args = window.document.location.href;
+    //alert(args);
+    var myargs = args.split('?');
+    var c = myargs[1];
+    var d = c.split('&');
+    var e = d[0]; 
+    var ee=e.split(':');
+    var f = d[1];
+    var ff=f.split(':');
+    var g = d[2];
+    var gg=g.split(':');
+
+    //alert(d);
+    var data = { "zid":ee[1], "mid":ff[1],"date":gg[1]};
+    $.post("../server/QueryHandler.ashx", data, function (msg) {
+        if (msg == "Args Error") {
+            //参数错误
+        } else {
+            //填充数据 
+            $("#CJ").html(msg);
+        }
+    })
+}
+
 
 //注册
 $(document).ready(function () {

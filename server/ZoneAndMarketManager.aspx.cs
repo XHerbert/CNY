@@ -70,7 +70,7 @@ public partial class server_ZoneAndMarketManager : System.Web.UI.Page
 
             tUserName = ds.Tables[sheet].Rows[i]["员工编号"].ToString().Trim();
             tUserPass = ds.Tables[sheet].Rows[i]["身份证号"].ToString().Trim();
-            tUserPass = tUserPass.Substring(tUserPass.Length - 6);
+            //tUserPass = tUserPass.Substring(tUserPass.Length - 6);
 
             using (SqlConnection connS = new SqlConnection(connStr))
             {
