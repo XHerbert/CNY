@@ -135,9 +135,10 @@ public partial class server_ZoneAndMarketManager : System.Web.UI.Page
                     break;
             }
 
-            marketName = ds.Tables[sheet].Rows[i]["详细客户"].ToString().Trim();
-            address = ds.Tables[sheet].Rows[i]["地址"].ToString().Trim();
-            no = ds.Tables[sheet].Rows[i]["客户编号"].ToString().Trim(); 
+            //marketName = ds.Tables[sheet].Rows[i]["详细客户"].ToString().Trim();
+            marketName = ds.Tables[sheet].Rows[i]["门店名称"].ToString().Trim();
+            //address = ds.Tables[sheet].Rows[i]["地址"].ToString().Trim();
+            //no = ds.Tables[sheet].Rows[i]["客户编号"].ToString().Trim(); 
             clickTiems = Convert.ToInt32(ds.Tables[sheet].Rows[i]["每店每天冲击人员数"].ToString().Trim());
 
             using (SqlConnection connS = new SqlConnection(connStr))
@@ -145,7 +146,8 @@ public partial class server_ZoneAndMarketManager : System.Web.UI.Page
                 connS.Open();
                 using (SqlCommand sqlcmd = new SqlCommand())
                 {
-                    string excelsql = string.Format("insert into dbo.tb_Market ( zoneId,market,clickTimes,address,no) values ({0},'{1}','{2}','{3}','{4}')", zoneId, marketName,clickTiems,address,no);
+                    //string excelsql = string.Format("insert into dbo.tb_Market ( zoneId,market,clickTimes,address,no) values ({0},'{1}','{2}','{3}','{4}')", zoneId, marketName,clickTiems,address,no);
+                    string excelsql = string.Format("insert into dbo.tb_Market ( zoneId,market,clickTimes) values ({0},'{1}','{2}')", zoneId, marketName,clickTiems);
                     sqlcmd.CommandText = excelsql;
                     sqlcmd.Connection = connS;
                     int rows=sqlcmd.ExecuteNonQuery();

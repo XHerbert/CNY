@@ -28,7 +28,7 @@ function k(){
         $("#tableContainer").html(msg);
         var date = new Date();
         beginTime = date.Format("yyyy-MM-dd hh:mm:ss");
-        endTime = new Date("2015/12/29 22:00:00").Format("yyyy-MM-dd hh:mm:ss");///////在此处修改报名结束时间
+        endTime = new Date("2015/12/30 01:00:00").Format("yyyy-MM-dd hh:mm:ss");///////在此处修改报名结束时间
         //alert(endate);
         var beginTimes = beginTime.substring(0, 10).split('-');
         var endTimes = endTime.substring(0, 10).split('-');
