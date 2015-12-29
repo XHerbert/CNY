@@ -10,7 +10,7 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
     public void ProcessRequest (HttpContext context) {
         context.Response.ContentType = "text/plain";
         string isInit = context.Request.Form["isInit"];
-        string ss = context.Session["user"].ToString();
+        //string ss = context.Session["user"].ToString();
         if (isInit == "true")
         {
             context.Response.Write(BuildPage(1));
