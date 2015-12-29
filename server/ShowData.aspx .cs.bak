@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Web.SessionState;
 using System.Configuration;
+using System.Drawing;
 
 public partial class server_ShowData : System.Web.UI.Page
 {
@@ -19,45 +20,49 @@ public partial class server_ShowData : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            DataBinds();
+            DataView source = new DataView(Zone());
+            DropDownList1.DataTextField = "zone";  //此列名为DropDownList1显示的值
+            DropDownList1.DataValueField = "id";
+            DropDownList1.DataSource = source;
+            DropDownList1.DataBind();
+            DropDownList1_SelectedIndexChanged(sender, e);
+        }
+    }
+
+    private void DataBinds()
+    {
+        using (SqlConnection conn = new SqlConnection(connStr))
+        {
+            using (SqlCommand cmd = new SqlCommand())
             {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    string sql = @" select U.userName as 员工号,Z.zone as 区域,M.market as 超市,S.date as 日期 from dbo.tb_SendName as S inner join dbo.tb_Market as M
+                string sql = @" select U.userName as 员工号,Z.zone as 区域,M.market as 超市,S.date as 日期 from dbo.tb_SendName as S inner join dbo.tb_Market as M
 	                                on S.mid=M.id
 	                                inner join dbo.tb_Zone as Z
 	                                on S.zid=Z.id
 	                                inner join dbo.tb_User as U 
 	                                on S.uid=U.id";
-                    cmd.CommandText = sql;
-                    cmd.Connection = conn;
-                    dt = new DataTable();
-                    SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
-                    sda.Fill(dt);
-                    detail.DataSource = dt.DefaultView;
-                    detail.DataBind();
-                }
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    string sql = @" select userName as 员工号,pass as 密码 from tb_User";
-                    cmd.CommandText = sql;
-                    cmd.Connection = conn;
-                    dt = new DataTable();
-                    SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
-                    sda.Fill(dt);
-                    user.DataSource = dt.DefaultView;
-                    user.DataBind();
-                }
+                cmd.CommandText = sql;
+                cmd.Connection = conn;
+                dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
+                sda.Fill(dt);
+                detail.DataSource = dt.DefaultView;
+                detail.DataBind();
             }
-
-        
-            DataView source = new DataView(Zone());
-            DropDownList1.DataTextField="zone";  //此列名为DropDownList1显示的值
-            DropDownList1.DataValueField="id";
-            DropDownList1.DataSource=source;
-            DropDownList1.DataBind();
-            DropDownList1_SelectedIndexChanged(sender, e);
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                string sql = @" select userName as 员工号,pass as 密码 from tb_User";
+                cmd.CommandText = sql;
+                cmd.Connection = conn;
+                dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
+                sda.Fill(dt);
+                user.DataSource = dt.DefaultView;
+                user.DataBind();
+            }
         }
+ 
     }
 
     private DataTable Zone()
@@ -222,7 +227,9 @@ public partial class server_ShowData : System.Web.UI.Page
 
     protected void user_RowEditing(object sender, GridViewEditEventArgs e)
     {
-
+        user.EditIndex = e.NewEditIndex;
+        user.EditRowStyle.BackColor = Color.Black;
+        DataBinds();
     }
 
     protected void user_RowUpdated(object sender, GridViewUpdatedEventArgs e)
@@ -233,6 +240,6 @@ public partial class server_ShowData : System.Web.UI.Page
     protected void user_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         user.EditIndex = -1;                 /*编辑索引赋值为-1，变回正常显示状态*/
-        //BindData();
+        DataBinds();
     }
 }
