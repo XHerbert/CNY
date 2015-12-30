@@ -204,35 +204,4 @@ public partial class server_ShowData : System.Web.UI.Page
         detail.DataSource = dt.DefaultView;
         detail.DataBind();
     }
-
-    protected void user_RowUpdating(object sender, GridViewUpdateEventArgs e)
-    {
-
-    }
-
-    protected void user_RowDeleted(object sender, GridViewDeletedEventArgs e)
-    {
-
-    }
-
-    protected void user_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    {
-
-    }
-
-    protected void user_RowEditing(object sender, GridViewEditEventArgs e)
-    {
-
-    }
-
-    protected void user_RowUpdated(object sender, GridViewUpdatedEventArgs e)
-    {
-
-    }
-
-    protected void user_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-    {
-        user.EditIndex = -1;                 /*编辑索引赋值为-1，变回正常显示状态*/
-        //BindData();
-    }
 }
