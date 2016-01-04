@@ -1,6 +1,8 @@
 ﻿/// <reference path="jquery.js" />
+/// <reference path="JavaScript.js" />
 
 function Init() {
+    dateSelect();
     $(".div-a").hide();
     $.post("../server/InitPageDataHandler.ashx", { "isInit": true }, function (msg) {
         var html = eval('(' + msg + ')');

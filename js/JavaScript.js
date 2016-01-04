@@ -1,8 +1,4 @@
 ﻿
-/// <reference path="../" />
-/// <reference path="jquery.js" />
-//var time1 = new Date().Format("yyyy-MM-dd");
-
 
 $(document).ready(
     $(".div-a").hide()
@@ -65,7 +61,6 @@ $(document).ready(
         });
     })
     );
-
 
 //查询
 $(document).ready(
@@ -176,10 +171,6 @@ $(document).ready(function () {
         });
     });
 //});
-
-
-
-
 $(document).ready(function () {
     $.post("../server/ZoneAndMarketHandler.ashx", { "isInit": true }, function (msg) {
         var html = eval('(' + msg + ')');
@@ -201,8 +192,6 @@ $(document).ready(function () {
         //alert(html.html[0].zone);
     });
 });
-
-
 
 //取超市列表
 function InitZoneAndMarket() {
@@ -240,7 +229,6 @@ function login() {
     });
 }
 
-
 function noteMsg() {
     $(".div-a").show(300).delay(3000).hide(300);
 }
@@ -272,7 +260,6 @@ function dateSelect() {
         $("#a_c").html("<b>" + n[1] + "</b>");
     });
 }
-
 
 $(document).click(function (e) {
     var v_id = $(e.target).attr('id');
