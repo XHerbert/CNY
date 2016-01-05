@@ -8,8 +8,11 @@ function Init() {
         var html = eval('(' + msg + ')');
         var zone = html.html[0].zone;
         var CNY = html.html[0].CNY;
+        var date = html.html[0].date;
         $("p#zone").html(zone);
         $("p#CNY").html(CNY);
+        $("p#date").html(date);
+        //$("p#date").html(date);
         k();
         //$(".btn-sm").css("display", "none")
     });//POST执行完成前，K已经执行，导致找不到参数
@@ -51,6 +54,19 @@ function k(){
     });
 }
 
+
+function dateSelect() {
+    var date = $("#pw").val();
+    var curMarket = $("#mar").val();
+    var data = { "date-s": date, "mar-s": curMarket };
+    //alert(date+"###"+curMarket);
+    $.post("../server/ShowChancesHandler.ashx", data, function (msg) {
+        if (msg.indexOf('###') < 0) return;
+        var n = msg.split('###');
+        $("#leftC").html("<b>" + n[0] + "</b>");
+        $("#a_c").html("<b>" + n[1] + "</b>");
+    });
+}
 
 Date.prototype.Format = function (fmt) { //author: meizz   
     var o = {

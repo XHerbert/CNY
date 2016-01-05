@@ -240,6 +240,7 @@ function showTb(e, i) {
 
 function changeSelect(e) {
     var zoneId = $("#un").val();
+    var curMarket = $("#mar").val();
     var data = { "isInit": false, "zoneId": zoneId };
     $.post("../server/InitPageDataHandler.ashx", data, function (msg) {
         var html = eval('(' + msg + ')');

@@ -13,13 +13,15 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         //string ss = context.Session["user"].ToString();
         if (isInit == "true")
         {
-            context.Response.Write(BuildPage(1));
+            context.Response.Write(BuildPage(1,5));
         }
         else
         {
             string zone = context.Request.Form["zoneId"];
+            string mid = context.Request.Form["MId"];
             int zoneId = zone==null?0:Convert.ToInt32(zone);
-            context.Response.Write(BuildPage(zoneId));
+            int mID = mid == null ? 0 : Convert.ToInt32(mid);
+            context.Response.Write(BuildPage(zoneId,mID));
         }
 
     }
@@ -30,7 +32,7 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         }
     }
 
-    private string BuildPage(int zoneId)
+    private string BuildPage(int zoneId,int mid)
     {
         StringBuilder dropListJson = new StringBuilder();
 
@@ -48,11 +50,19 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         html_CNY.Append(GetMarketList(zoneId));
         html_CNY.Append("</select>\"");
 
+        html_date.Append("\"<span>日期选择</span>");
+        html_date.Append("<select id=\'pw\'   onChange=\'dateSelect()\'  class=\'btn-block form-control  date form_date\' data-date-format=\'yyyy-mm-dd\'>");
+        html_date.Append(GetDateList(zoneId,mid));
+        html_date.Append("</select>\"");
+
+
         dropListJson.Append("{\"html\":[");
         dropListJson.Append("{\"zone\":");
         dropListJson.Append(html_zone);
         dropListJson.Append(",\"CNY\":");
         dropListJson.Append(html_CNY);
+        dropListJson.Append(",\"date\":");
+        dropListJson.Append(html_date);
         dropListJson.Append("}]}");
 
         return dropListJson.ToString();
@@ -64,7 +74,7 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         SqlParameter para = new SqlParameter("@type",System.Data.SqlDbType.Int);
         para.Value = -1;
         DataTable dt= SQL.ExcuteProcedureQuery("sp_GetList", para);
-        if (dt == null)
+        if (dt == null || dt.Rows.Count==0)
         {
             zoneBuilder.Append("<option value=\'nullable\'>暂无数据</option>");
         }
@@ -85,7 +95,7 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         SqlParameter para = new SqlParameter("@type",System.Data.SqlDbType.Int);
         para.Value = zoneId;
         DataTable dt= SQL.ExcuteProcedureQuery("sp_GetList", para);
-        if (dt == null)
+        if (dt == null || dt.Rows.Count==0)
         {
             marketBuilder.Append("<option value=\'nullable\'>暂无数据</option>");
         }
@@ -98,5 +108,31 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         }
 
         return marketBuilder.ToString();
+    }
+
+    private string GetDateList(int zoneId,int Mid)
+    {
+        StringBuilder leftDateBuilder = new StringBuilder();
+        SqlParameter[] paras =
+        {
+            new SqlParameter("@zid",System.Data.SqlDbType.Int),
+            new SqlParameter("@mid",System.Data.SqlDbType.Int)
+        };
+        paras[0].Value = zoneId;
+        paras[1].Value = Mid;
+        DataTable dt= SQL.ExcuteProcedureQuery("LeftDate", paras);
+        if (dt == null || dt.Rows.Count==0)
+        {
+            leftDateBuilder.Append("<option value=\'nullable\'>暂无数据</option>");
+        }
+        else
+        {
+            foreach (DataRow item in dt.Rows)
+            {
+                leftDateBuilder.Append(string.Format("<option value=\'{0}\'>{1}</option>",item[0].ToString().Substring(0,10),item[0].ToString().Substring(0,10)));
+            }
+        }
+
+        return leftDateBuilder.ToString();
     }
 }
