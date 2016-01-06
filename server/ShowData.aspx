@@ -28,27 +28,22 @@
     <form id="form1" runat="server">
         <div style="float: left;margin-left:10px">
             <div style="float:left">
-            <asp:GridView ID="detail" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+            <asp:GridView ID="detail" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" EnableModelValidation="True" OnSelectedIndexChanged="detail_SelectedIndexChanged" OnRowDeleting="detail_RowDeleting">
                 <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
                 <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
                 <RowStyle BackColor="White" ForeColor="#330099" />
                 <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
-               
+               <Columns>
+                
+                <asp:CommandField ShowDeleteButton="True" />
+            </Columns>
             </asp:GridView>
                 </div>
             <div style="float:left;margin-left:5px">
-                <asp:GridView ID="user" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="5" EnableModelValidation="True" GridLines="both" CellSpacing="5" Visible="False">
-                <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
-                <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
-                <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
-                <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
-                <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
-               
-            </asp:GridView>
             </div>
             <div style="float:left;margin-left:5px">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataKeyNames="id" DataSourceID="Users" EnableModelValidation="True">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataKeyNames="id" DataSourceID="Users" EnableModelValidation="True" Visible="False">
                 <Columns>
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                     <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
@@ -107,6 +102,28 @@
                     <asp:Button ID="dateExport" runat="server" CssClass="btn-success" Text="导出查询数据到Excel" OnClick="dateExport_Click" Height="35"/>
                 </p>
             </fieldset>
+
+             <fieldset style="width: 80%">
+                    <legend>新增报名</legend>
+                 <p>用户名：<asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox></p>
+                 <p>日期：
+                 <asp:DropDownList ID="DropDownList3" runat="server" Height="30px" Width="175px">
+                     <asp:ListItem>2016-1-31</asp:ListItem>
+                     <asp:ListItem>2016-1-29</asp:ListItem>
+                     <asp:ListItem>2016-2-1</asp:ListItem>
+                     <asp:ListItem>2016-2-2</asp:ListItem>
+                     <asp:ListItem>2016-2-3</asp:ListItem>
+                     <asp:ListItem>2016-2-4</asp:ListItem>
+                     <asp:ListItem>2016-2-5</asp:ListItem>
+                     <asp:ListItem>2016-2-6</asp:ListItem>
+                     <asp:ListItem>2016-2-7</asp:ListItem>
+                     </asp:DropDownList></p>
+
+                 <p>
+                     <asp:Button ID="Add" runat="server" CssClass="btn-success" Text="新增" OnClick="Add_Click" /></p>
+                </fieldset>
+
+
             <fieldset style="width: 80%">
                     <legend>相关链接</legend>
                                         

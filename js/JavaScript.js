@@ -241,12 +241,16 @@ function showTb(e, i) {
 function changeSelect(e) {
     var zoneId = $("#un").val();
     var curMarket = $("#mar").val();
-    var data = { "isInit": false, "zoneId": zoneId };
+    var data = { "isInit": false, "zoneId": zoneId, "MId": curMarket };
     $.post("../server/InitPageDataHandler.ashx", data, function (msg) {
         var html = eval('(' + msg + ')');
         var CNY = html.html[0].CNY;
+        var date = html.html[0].date;
         $("p#CNY").html(CNY);
+        $("p#date").html(date);
     });
+
+
 }
 
 function dateSelect() {

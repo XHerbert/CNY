@@ -155,7 +155,21 @@ public class SQL
     }
 
 
-
+    public static int DeleteSendName(string sql)
+    {
+        int i = -1;
+        using (SqlConnection conn = new SqlConnection(connStr))
+        {
+            conn.Open();
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = conn;
+                cmd.CommandText = sql;
+                i = cmd.ExecuteNonQuery();
+            }
+        }
+        return i;
+    }
 
     public static int SetEffective()
     {

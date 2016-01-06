@@ -129,7 +129,7 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         {
             foreach (DataRow item in dt.Rows)
             {
-                leftDateBuilder.Append(string.Format("<option value=\'{0}\'>{1}</option>",item[0].ToString().Substring(0,10),item[0].ToString().Substring(0,10)));
+                leftDateBuilder.Append(string.Format("<option value=\'{0}\'>{1}</option>",item[0].ToString().Substring(0,9),item[0].ToString().Substring(0,9)));
             }
         }
 

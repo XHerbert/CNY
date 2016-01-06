@@ -23,7 +23,7 @@ public partial class server_ShowData : System.Web.UI.Page
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    string sql = @" select U.userName as 员工号,Z.zone as 区域,M.market as 超市,S.date as 日期 from dbo.tb_SendName as S inner join dbo.tb_Market as M
+                    string sql = @" select S.id as ID,U.userName as 员工号,Z.zone as 区域,M.market as 超市,S.date as 日期 from dbo.tb_SendName as S inner join dbo.tb_Market as M
 	                                on S.mid=M.id
 	                                inner join dbo.tb_Zone as Z
 	                                on S.zid=Z.id
@@ -37,24 +37,24 @@ public partial class server_ShowData : System.Web.UI.Page
                     detail.DataSource = dt.DefaultView;
                     detail.DataBind();
                 }
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    string sql = @" select userName as 员工号,pass as 密码 from tb_User";
-                    cmd.CommandText = sql;
-                    cmd.Connection = conn;
-                    dt = new DataTable();
-                    SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
-                    sda.Fill(dt);
-                    user.DataSource = dt.DefaultView;
-                    user.DataBind();
-                }
+                //using (SqlCommand cmd = new SqlCommand())
+                //{
+                //    string sql = @" select userName as 员工号,pass as 密码 from tb_User";
+                //    cmd.CommandText = sql;
+                //    cmd.Connection = conn;
+                //    dt = new DataTable();
+                //    SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
+                //    sda.Fill(dt);
+                //    user.DataSource = dt.DefaultView;
+                //    user.DataBind();
+                //}
             }
 
-        
+
             DataView source = new DataView(Zone());
-            DropDownList1.DataTextField="zone";  //此列名为DropDownList1显示的值
-            DropDownList1.DataValueField="id";
-            DropDownList1.DataSource=source;
+            DropDownList1.DataTextField = "zone";  //此列名为DropDownList1显示的值
+            DropDownList1.DataValueField = "id";
+            DropDownList1.DataSource = source;
             DropDownList1.DataBind();
             DropDownList1_SelectedIndexChanged(sender, e);
         }
@@ -62,7 +62,7 @@ public partial class server_ShowData : System.Web.UI.Page
 
     private DataTable Zone()
     {
-        SqlParameter p = new SqlParameter("@type",SqlDbType.Int);
+        SqlParameter p = new SqlParameter("@type", SqlDbType.Int);
         p.Value = -1;
         return SQL.ExcuteProcedureQuery("sp_GetList", p);
     }
@@ -168,7 +168,7 @@ public partial class server_ShowData : System.Web.UI.Page
         pars[3].Value = inputtoDate.Value;
         pars[4].Value = 0;
         dt = new DataTable();
-        dt=SQL.ExcuteProcedureQuery("sp_QueryByCondition", pars);
+        dt = SQL.ExcuteProcedureQuery("sp_QueryByCondition", pars);
         detail.DataSource = dt.DefaultView;
         detail.DataBind();
     }
@@ -176,9 +176,9 @@ public partial class server_ShowData : System.Web.UI.Page
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
         string id = DropDownList1.SelectedItem.Value;
-        SqlParameter p = new SqlParameter("@type",SqlDbType.Int);
+        SqlParameter p = new SqlParameter("@type", SqlDbType.Int);
         p.Value = id;
-        DataTable t=SQL.ExcuteProcedureQuery("sp_GetList", p);
+        DataTable t = SQL.ExcuteProcedureQuery("sp_GetList", p);
         DropDownList2.DataTextField = "market";
         DropDownList2.DataValueField = "id";
         DropDownList2.DataSource = new DataView(t);
@@ -203,5 +203,131 @@ public partial class server_ShowData : System.Web.UI.Page
         dt = SQL.ExcuteProcedureQuery("sp_QueryByCondition", ps);
         detail.DataSource = dt.DefaultView;
         detail.DataBind();
+    }
+
+    protected void detail_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Response.Write("<script>alert('sss')</script>");
+    }
+
+
+    protected void detail_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        try
+        {
+            // string TID = user.DataKeys[e.RowIndex].Value.ToString();
+            string TID = detail.Rows[e.RowIndex].Cells[1].Text.ToString();
+            string delSQL = "delete from tb_SendName where id=" + TID;
+            int flag = SQL.DeleteSendName(delSQL);
+            //if (!Page.IsPostBack)
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        string sql = @" select S.id as ID,U.userName as 员工号,Z.zone as 区域,M.market as 超市,S.date as 日期 from dbo.tb_SendName as S inner join dbo.tb_Market as M
+	                                on S.mid=M.id
+	                                inner join dbo.tb_Zone as Z
+	                                on S.zid=Z.id
+	                                inner join dbo.tb_User as U 
+	                                on S.uid=U.id";
+                        cmd.CommandText = sql;
+                        cmd.Connection = conn;
+                        dt = new DataTable();
+                        SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
+                        sda.Fill(dt);
+                        detail.DataSource = dt.DefaultView;
+                        detail.DataBind();
+                    }
+                   
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Add_Click(object sender, EventArgs e)
+    {
+        string z = DropDownList1.SelectedValue;
+        string m = DropDownList2.SelectedValue;
+        string u = TextBox1.Text;
+        string d = DropDownList3.SelectedValue;
+        SqlParameter[] pars = {
+            new SqlParameter("@uid",System.Data.SqlDbType.Int),
+            new SqlParameter("@zid",System.Data.SqlDbType.Int),
+            new SqlParameter("@mid",System.Data.SqlDbType.Int),
+            new SqlParameter("@date",System.Data.SqlDbType.Date)
+            };
+        int i = 0;
+        pars[0].Value = SQL.GetIDs(u);
+        pars[1].Value = z;
+        pars[2].Value = m;
+        pars[3].Value = d;
+
+        i = SQL.ExcuteProcedureNonquery("sp_AddSendNameRecord", "@state", pars);
+        //using (SqlConnection conn=new SqlConnection())
+        ////if (i == -1)
+        ////{
+        ////    context.Response.Write(-1);//"报名次数达到上限了哦"
+        ////}
+        ////else if (i == -2)
+        ////{
+        ////    context.Response.Write(-2);//"该地区该超市已经报名了哦"
+        ////}
+        ////else if (i == -3)
+        ////{
+        ////    context.Response.Write(-3);//"今天已经报名了哦"
+        ////}
+        ////else if (i == -5)
+        ////{
+        ////    context.Response.Write(-5);//"该地区该超市已经报名了哦"
+        ////}
+        ////else
+        ////{
+        ////    SqlParameter p = new SqlParameter("@userId", SqlDbType.Int);
+        ////    p.Value = Convert.ToInt32(context.Session["user"].ToString());
+        ////    DataTable dt = SQL.ExcuteProcedureQuery("sp_SendNameTable", p);
+
+        ////    if (dt.Rows.Count > 0)
+        ////    {
+        ////        msg = BuildRecoedTable(dt);
+        ////    }
+        ////}
+
+
+
+
+        if (i > 0)
+        {
+            Response.Write("<script type='javascript'> alert('修改成功')</script>");
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    string sql = @" select S.id as ID,U.userName as 员工号,Z.zone as 区域,M.market as 超市,S.date as 日期 from dbo.tb_SendName as S inner join dbo.tb_Market as M
+	                                on S.mid=M.id
+	                                inner join dbo.tb_Zone as Z
+	                                on S.zid=Z.id
+	                                inner join dbo.tb_User as U 
+	                                on S.uid=U.id";
+                    cmd.CommandText = sql;
+                    cmd.Connection = conn;
+                    dt = new DataTable();
+                    SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
+                    sda.Fill(dt);
+                    detail.DataSource = dt.DefaultView;
+                    detail.DataBind();
+                }
+
+            }
+        }
     }
 }
