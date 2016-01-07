@@ -156,6 +156,93 @@ public partial class server_ZoneAndMarketManager : System.Web.UI.Page
         }
     }
 
+
+    private void InputNewMarketExcel(string pPath, string sheet)
+    {
+        string conn = "Provider = Microsoft.Ace.OleDb.12.0 ; Data Source =" + pPath + ";Extended Properties='Excel 12.0;HDR=False;IMEX=1'";
+        OleDbConnection oleCon = new OleDbConnection(conn);
+        oleCon.Open();
+        string Sql = string.Format("select * from [{0}] as A", sheet);
+        OleDbDataAdapter mycommand = new OleDbDataAdapter(Sql, oleCon);
+        DataSet ds = new DataSet();
+        mycommand.Fill(ds, sheet);
+        oleCon.Close();
+        int count = ds.Tables[sheet].Rows.Count;
+        for (int i = 0; i < count; i++)
+        {
+            int zoneId = 0;
+            int clickTiems = 0;
+            int clickTiems1 = 0;
+            int clickTiems2 = 0;
+            int clickTiems3 = 0;
+            int clickTiems4 = 0;
+            int clickTiems5 = 0;
+            int clickTiems6 = 0;
+            int clickTiems7 = 0;
+            int clickTiems8 = 0;
+            string zoneName, marketName, address, no;
+            zoneName = ds.Tables[sheet].Rows[i]["区域"].ToString().Trim();
+            switch (zoneName)
+            {
+                case "杭湖区":
+                    zoneId = 1;
+                    break;
+                case "杭州区":
+                    zoneId = 2;
+                    break;
+                case "金华区":
+                    zoneId = 3;
+                    break;
+                case "丽衢区":
+                    zoneId = 4;
+                    break;
+                case "宁波区":
+                    zoneId = 5;
+                    break;
+                case "绍兴区":
+                    zoneId = 6;
+                    break;
+                case "台宁区":
+                    zoneId = 7;
+                    break;
+                case "温州区":
+                    zoneId = 8;
+                    break;
+                default:
+                    break;
+            }
+
+            //marketName = ds.Tables[sheet].Rows[i]["详细客户"].ToString().Trim();
+            marketName = ds.Tables[sheet].Rows[i]["门店名称"].ToString().Trim();
+            //address = ds.Tables[sheet].Rows[i]["地址"].ToString().Trim();
+            //no = ds.Tables[sheet].Rows[i]["客户编号"].ToString().Trim(); 
+            clickTiems = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c1"].ToString().Trim());
+            clickTiems1 = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c2"].ToString().Trim());
+            clickTiems2 = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c3"].ToString().Trim());
+            clickTiems3 = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c4"].ToString().Trim());
+            clickTiems4 = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c5"].ToString().Trim());
+            clickTiems5 = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c6"].ToString().Trim());
+            clickTiems6 = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c7"].ToString().Trim());
+            clickTiems7 = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c8"].ToString().Trim());
+            clickTiems8 = Convert.ToInt32(ds.Tables[sheet].Rows[i]["c9"].ToString().Trim());
+
+
+            using (SqlConnection connS = new SqlConnection(connStr))
+            {
+                connS.Open();
+                using (SqlCommand sqlcmd = new SqlCommand())
+                {
+                    //string excelsql = string.Format("insert into dbo.tb_Market ( zoneId,market,clickTimes,address,no) values ({0},'{1}','{2}','{3}','{4}')", zoneId, marketName,clickTiems,address,no);
+                    string excelsql = string.Format("insert into dbo.tb_Market ( zoneId,market,c1,c2,c3,c4,c5,c6,c7,c8,c9) values ({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')", zoneId, marketName, clickTiems, clickTiems1, clickTiems2, clickTiems3, clickTiems4, clickTiems5, clickTiems6, clickTiems7, clickTiems8);
+                    sqlcmd.CommandText = excelsql;
+                    sqlcmd.Connection = connS;
+                    int rows = sqlcmd.ExecuteNonQuery();
+                }
+            }
+        }
+    }
+
+
     protected void import_Click(object sender, EventArgs e)
     {
         string savePath = Server.MapPath("~/upload/");//指定上传文件在服务器上的保存路径                                           
@@ -242,7 +329,8 @@ public partial class server_ZoneAndMarketManager : System.Web.UI.Page
         {
             if (filePath.Contains("xls") || filePath.Contains("xlsx"))//判断文件是否存在
             {
-                InputMarketExcel(filePath, "MIT冲击的超市$");
+                //InputMarketExcel(filePath, "MIT冲击的超市$");
+                InputNewMarketExcel(filePath, "Sheet2$");
             }
             else
             {
