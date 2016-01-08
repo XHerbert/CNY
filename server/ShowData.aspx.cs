@@ -273,34 +273,34 @@ public partial class server_ShowData : System.Web.UI.Page
         pars[3].Value = d;
 
         i = SQL.ExcuteProcedureNonquery("sp_AddSendNameRecord", "@state", pars);
-        //using (SqlConnection conn=new SqlConnection())
-        ////if (i == -1)
-        ////{
-        ////    context.Response.Write(-1);//"报名次数达到上限了哦"
-        ////}
-        ////else if (i == -2)
-        ////{
-        ////    context.Response.Write(-2);//"该地区该超市已经报名了哦"
-        ////}
-        ////else if (i == -3)
-        ////{
-        ////    context.Response.Write(-3);//"今天已经报名了哦"
-        ////}
-        ////else if (i == -5)
-        ////{
-        ////    context.Response.Write(-5);//"该地区该超市已经报名了哦"
-        ////}
-        ////else
-        ////{
-        ////    SqlParameter p = new SqlParameter("@userId", SqlDbType.Int);
-        ////    p.Value = Convert.ToInt32(context.Session["user"].ToString());
-        ////    DataTable dt = SQL.ExcuteProcedureQuery("sp_SendNameTable", p);
+        using (SqlConnection conn = new SqlConnection())
+            if (i == -1)
+            {
+                this.msg.Text = "报名次数达到上限了哦";//"报名次数达到上限了哦"
+            }
+            else if (i == -2)
+            {
+                this.msg.Text = "该地区该超市已经报名了哦";//"该地区该超市已经报名了哦"
+            }
+            else if (i == -3)
+            {
+                this.msg.Text ="今天已经报名了哦";//"今天已经报名了哦"
+            }
+            else if (i == -5)
+            {
+                this.msg.Text ="该地区该超市已经报名了哦";//"该地区该超市已经报名了哦"
+            }
+            else
+            {
+                //SqlParameter p = new SqlParameter("@userId", SqlDbType.Int);
+                //p.Value = Convert.ToInt32(context.Session["user"].ToString());
+                //DataTable dt = SQL.ExcuteProcedureQuery("sp_SendNameTable", p);
 
-        ////    if (dt.Rows.Count > 0)
-        ////    {
-        ////        msg = BuildRecoedTable(dt);
-        ////    }
-        ////}
+                //if (dt.Rows.Count > 0)
+                //{
+                //    msg = BuildRecoedTable(dt);
+                //}
+            }
 
 
 

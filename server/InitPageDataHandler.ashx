@@ -5,6 +5,7 @@ using System.Web;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using System.Globalization;
 public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequiresSessionState{
 
     public void ProcessRequest (HttpContext context) {
@@ -129,7 +130,11 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         {
             foreach (DataRow item in dt.Rows)
             {
-                leftDateBuilder.Append(string.Format("<option value=\'{0}\'>{1}</option>",item[0].ToString().Substring(0,9),item[0].ToString().Substring(0,9)));
+               string dateValue = item[0].ToString().Replace("/","-").ToString().Split(' ')[0];
+               //string dateValue = String.Format("yyyy-MM-dd",item[0].ToString());
+                //dateValue=DateTime.ParseExact(dateValue, "yyyy-MM-dd", null).ToString("yyyy-M-d");//本地可用
+                string dateText = dateValue;
+                leftDateBuilder.Append(string.Format("<option value=\'{0}\'>{1}</option>",dateValue,dateValue));
             }
         }
 

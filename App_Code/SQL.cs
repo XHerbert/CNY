@@ -191,12 +191,57 @@ public class SQL
     public static int QueryChances(out int times,int id,string date)
     {
         int curOcupied = -1;
+        string column = string.Empty;
+        switch (date)
+        {
+            case "2016-1-29":
+            case "2016-01-29":
+                column = "c1";
+                break;
+            case "2016-1-30":
+            case "2016-01-30":
+                column = "c2";
+                break;
+            case "2016-1-31":
+            case "2016-01-31":
+                column = "c3";
+                break;
+            case "2016-2-1":
+            case "2016-02-01":
+                column = "c4";
+                break;
+            case "2016-2-2":
+            case "2016-02-02":
+                column = "c5";
+                break;
+            case "2016-2-3":
+            case "2016-02-03":
+                column = "c6";
+                break;
+            case "2016-2-4":
+            case "2016-02-04":
+                column = "c7";
+                break;
+            case "2016-2-5":
+            case "2016-02-05":
+                column = "c8";
+                break;
+            case "2016-2-6":
+            case "2016-02-06":
+                column = "c9";
+                break;
+            default:
+                column= "c1";
+                break;
+        }
+
+
         using(SqlConnection conn=new SqlConnection(connStr))
         {
             conn.Open();
             using (SqlCommand cmd=new SqlCommand())
             {
-                string sqlcmd = string.Format("select clickTimes from tb_Market where id={0}",id);
+                string sqlcmd = string.Format("select {0} from tb_Market where id={1}",column,id);
                 cmd.Connection = conn;
                 cmd.CommandText = sqlcmd;
                 times = (int)cmd.ExecuteScalar();
@@ -209,15 +254,6 @@ public class SQL
         }
         return curOcupied;
     }
-
-
-
-
-
-
-
-
-
 
 
     public static int GetIDs(string name)

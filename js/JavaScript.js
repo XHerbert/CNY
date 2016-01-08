@@ -10,18 +10,6 @@ $(document).ready(
     $(".btn-sm").addClass("hideBtn")
 );
 
-//$(document).ready(function () {
-//    var date = $("#pw").val();
-//    var curMarket = $("#mar").val();
-//    var data = { "date-s": date, "mar-s": curMarket };
-//    //alert(date+"###"+curMarket);
-//    $.post("../server/ShowChancesHandler.ashx", data, function (msg) {
-//        if (msg.indexOf('###') < 0) return;
-//        var n = msg.split('###');
-//        $("#leftC").html("<b>" + n[0] + "</b>");
-//        $("#a_c").html("<b>" + n[1] + "</b>");
-//    });
-//});
 
 $(document).ready($("#b1").click(function () {
     login();

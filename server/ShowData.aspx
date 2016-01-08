@@ -108,20 +108,23 @@
                  <p>用户名：<asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox></p>
                  <p>日期：
                  <asp:DropDownList ID="DropDownList3" runat="server" Height="30px" Width="175px">
-                     <asp:ListItem>2016-1-31</asp:ListItem>
                      <asp:ListItem>2016-1-29</asp:ListItem>
+                     <asp:ListItem>2016-1-30</asp:ListItem>
+                     <asp:ListItem>2016-1-31</asp:ListItem>
                      <asp:ListItem>2016-2-1</asp:ListItem>
                      <asp:ListItem>2016-2-2</asp:ListItem>
                      <asp:ListItem>2016-2-3</asp:ListItem>
                      <asp:ListItem>2016-2-4</asp:ListItem>
                      <asp:ListItem>2016-2-5</asp:ListItem>
                      <asp:ListItem>2016-2-6</asp:ListItem>
-                     <asp:ListItem>2016-2-7</asp:ListItem>
                      </asp:DropDownList></p>
 
                  <p>
                      <asp:Button ID="Add" runat="server" CssClass="btn-success" Text="新增" OnClick="Add_Click" /></p>
-                </fieldset>
+                
+                <p>
+                         <asp:Label ID="msg" runat="server" ForeColor="Red"></asp:Label></p>
+             </fieldset>
 
 
             <fieldset style="width: 80%">

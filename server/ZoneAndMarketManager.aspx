@@ -47,6 +47,7 @@
                         <button id="regServer"   class="btn-success"  >添加</button>-->
                         <input type="button" id="regServer"   class="btn-success"  value="添加" />
                     </p>
+                     
                 </fieldset>
                 <!---->
 
