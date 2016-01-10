@@ -229,6 +229,39 @@ function showTb(e, i) {
 function changeSelect(e) {
     var zoneId = $("#un").val();
     var curMarket = $("#mar").val();
+
+    switch (zoneId) {
+        case "1":
+            curMarket = '1';
+            break;
+        case "2":
+            curMarket = '10';
+            break;
+        case "4":
+            curMarket = '40';
+            break;
+        case "3":
+            curMarket = '33';
+            break;
+        case "5":
+            curMarket = '47';
+            break;
+        case "6":
+            curMarket = '56';
+            break;
+        case "7":
+            curMarket = '63';
+            break;
+        case "8":
+            curMarket = '69';
+            break;
+        default:
+
+    }
+
+
+
+
     var data = { "isInit": false, "zoneId": zoneId, "MId": curMarket };
     $.post("../server/InitPageDataHandler.ashx", data, function (msg) {
         var html = eval('(' + msg + ')');

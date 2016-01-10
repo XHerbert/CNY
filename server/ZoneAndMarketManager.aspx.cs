@@ -116,7 +116,7 @@ public partial class server_ZoneAndMarketManager : System.Web.UI.Page
                 case "金华区":
                     zoneId = 3;
                     break;
-                case "丽衡区":
+                case "丽衢区":
                     zoneId = 4;
                     break;
                 case "宁波区":

@@ -96,8 +96,9 @@ public class NewRecordHandler : IHttpHandler, System.Web.SessionState.IRequiresS
         table.Append("<thead><td>员工号</td><td>区域</td><td>超市</td><td>时间</td><td>操作</td></thead>");
         foreach (DataRow row in records.Rows)
         {
+            string dateValue = row[4].ToString().Replace("/","-").ToString().Split(' ')[0];
             string btn = string.Format("<button id=\'btn&&&{0}\' class=\'btn-sm\' type=\'button\'>撤销</button>",row[0]);
-            table.Append(string.Format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td></tr>", row[1], row[2], row[3], row[4].ToString().Substring(0, 10), btn));
+            table.Append(string.Format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td></tr>", row[1], row[2], row[3], dateValue, btn));
         }
         table.Append("</table>");
         //table.Append("\"state\":");
