@@ -47,11 +47,11 @@ public class QueryHandler : IHttpHandler {
 
         StringBuilder table = new StringBuilder();
         table.Append("<table id=\'tList\' class=\'table table-condensed t_tb\'>");
-        table.Append("<thead><td>区域</td><td>门店</td><td>冲击人员</td><td>日期</td></thead>");
+        table.Append("<thead><td>区域</td><td>门店</td><td>冲击人员</td><td>日期</td><td>电话</td></thead>");
         foreach (DataRow row in records.Rows)
         {
             //string btn = string.Format("<button id=\'btn&&&{0}\' class=\'btn-sm\' type=\'button\'>撤销</button>",row[0]);
-            table.Append(string.Format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td></tr>", row[0], row[1], row[2], row[3]));
+            table.Append(string.Format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td></tr>", row[0], row[1], row[2], row[3], row[4]));
         }
         table.Append("</table>");
         return table.ToString();

@@ -21,19 +21,21 @@ public class NewRecordHandler : IHttpHandler, System.Web.SessionState.IRequiresS
             string zid = context.Request.Form["zid"];
             string mid = context.Request.Form["mid"];
             string date = context.Request.Form["date"];
+            string phone = context.Request.Form["phone"];
 
             SqlParameter[] pars = {
             new SqlParameter("@uid",System.Data.SqlDbType.Int),
             new SqlParameter("@zid",System.Data.SqlDbType.Int),
             new SqlParameter("@mid",System.Data.SqlDbType.Int),
-            new SqlParameter("@date",System.Data.SqlDbType.Date)
+            new SqlParameter("@date",System.Data.SqlDbType.Date),
+            new SqlParameter("@phone",System.Data.SqlDbType.VarChar)
             };
 
             pars[0].Value = uid;
             pars[1].Value = zid;
             pars[2].Value = mid;
             pars[3].Value = date;
-
+            pars[4].Value = phone;
             i = SQL.ExcuteProcedureNonquery("sp_AddSendNameRecord", "@state", pars);
             if (i == -1)
             {

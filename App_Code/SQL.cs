@@ -194,40 +194,40 @@ public class SQL
         string column = string.Empty;
         switch (date)
         {
-            case "2016-1-29":
-            case "2016-01-29":
+            case "2016-3-29":
+            case "2016-03-29":
                 column = "c1";
                 break;
-            case "2016-1-30":
-            case "2016-01-30":
+            case "2016-3-30":
+            case "2016-03-30":
                 column = "c2";
                 break;
-            case "2016-1-31":
-            case "2016-01-31":
+            case "2016-3-31":
+            case "2016-03-31":
                 column = "c3";
                 break;
-            case "2016-2-1":
-            case "2016-02-01":
+            case "2016-4-1":
+            case "2016-04-01":
                 column = "c4";
                 break;
-            case "2016-2-2":
-            case "2016-02-02":
+            case "2016-4-2":
+            case "2016-04-02":
                 column = "c5";
                 break;
-            case "2016-2-3":
-            case "2016-02-03":
+            case "2016-4-3":
+            case "2016-04-03":
                 column = "c6";
                 break;
-            case "2016-2-4":
-            case "2016-02-04":
+            case "2016-4-4":
+            case "2016-04-04":
                 column = "c7";
                 break;
-            case "2016-2-5":
-            case "2016-02-05":
+            case "2016-4-5":
+            case "2016-04-05":
                 column = "c8";
                 break;
-            case "2016-2-6":
-            case "2016-02-06":
+            case "2016-4-6":
+            case "2016-04-06":
                 column = "c9";
                 break;
             default:

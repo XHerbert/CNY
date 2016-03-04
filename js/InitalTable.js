@@ -9,10 +9,11 @@ function Init() {
         var zone = html.html[0].zone;
         var CNY = html.html[0].CNY;
         var date = html.html[0].date;
+        var phone = html.html[0].phone;
         $("p#zone").html(zone);
         $("p#CNY").html(CNY);
         $("p#date").html(date);
-        //$("p#date").html(date);
+        //$("p#phone").html(phone);
         k();
         //$(".btn-sm").css("display", "none")
     });//POST执行完成前，K已经执行，导致找不到参数
@@ -33,7 +34,7 @@ function k(){
         $("#tableContainer").html(msg);
         var date = new Date();
         beginTime = date.Format("yyyy-MM-dd hh:mm:ss");
-        endTime = new Date("2015/12/30 01:00:00").Format("yyyy-MM-dd hh:mm:ss");///////在此处修改报名结束时间
+        endTime = new Date("2016/01/19 01:00:00").Format("yyyy-MM-dd hh:mm:ss");///////在此处修改报名结束时间
         //alert(endate);
         var beginTimes = beginTime.substring(0, 10).split('-');
         var endTimes = endTime.substring(0, 10).split('-');
@@ -42,11 +43,16 @@ function k(){
         //alert(beginTime);
         //alert(endTime);
         var a = (Date.parse(endTimes) - Date.parse(beginTimes)) / 3600 / 1000;
-        //alert(a);
+        //var b = (Date.parse(beginTimes) - Date.parse(endTimes)) / 3600 / 1000;
+        //alert(Date.parse(endTimes));
+        //alert(Date.parse(beginTimes));
+        //alert("a%"+a);//-
+        //alert("b%"+b);//+
         if (a < 0) {
             $(".btn-sm").css("display", "none")
         } else if (a > 0) {
             //alert("endTime大!");
+            //$(".btn-sm").css("display", "none")
         } else if (a == 0) {
             //alert("时间相等!");
         }

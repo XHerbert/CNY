@@ -22,13 +22,14 @@ $(document).ready(
         var zone = $("#un").val();
         var mar = $("#mar").val();
         var dt = $("#pw").val();
+        var ph = $("#ph").val();
         var user = "s";//从session 获取
         var initPage = "false";//非载入页面，插入数据
         //$.post("../server/GetNameByIDHandler.ashx", { "type": 1 }, function (msg) {
         //    user = msg;
         //});
         //发送数据
-        var data = { "uid": user, "zid": zone, "mid": mar, "date": dt, "ipage": initPage };
+        var data = { "uid": user, "zid": zone, "mid": mar, "date": dt,"phone":ph, "ipage": initPage };
         $.post("../server/NewRecordHandler.ashx", data, function (msg) {
             if (msg == -1) {
                 $(".div-b p").text("报名次数达到上限了哦！");

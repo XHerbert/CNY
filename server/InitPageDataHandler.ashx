@@ -40,6 +40,7 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         StringBuilder html_zone = new StringBuilder();
         StringBuilder html_CNY = new StringBuilder();
         StringBuilder html_date = new StringBuilder();
+        StringBuilder html_phone = new StringBuilder();
 
         html_zone.Append("\"<span>区域选择</span>");
         html_zone.Append("<select  onChange=\'changeSelect()\' id=\'un\' class=\'btn-block form-control\' size=1>");
@@ -56,6 +57,8 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         html_date.Append(GetDateList(zoneId,mid));
         html_date.Append("</select>\"");
 
+        html_phone.Append("\"<span>手机号码</span>");
+        html_phone.Append("<input id=\'ph\' class=\'btn-block form-control\' placeholder=\'请输入密码\' type=\'text\'>\"");
 
         dropListJson.Append("{\"html\":[");
         dropListJson.Append("{\"zone\":");
@@ -64,6 +67,8 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         dropListJson.Append(html_CNY);
         dropListJson.Append(",\"date\":");
         dropListJson.Append(html_date);
+        dropListJson.Append(",\"phone\":");
+        dropListJson.Append(html_phone);
         dropListJson.Append("}]}");
 
         return dropListJson.ToString();
@@ -130,8 +135,8 @@ public class InitPageDataHandler : IHttpHandler,System.Web.SessionState.IRequire
         {
             foreach (DataRow item in dt.Rows)
             {
-               string dateValue = item[0].ToString().Replace("/","-").ToString().Split(' ')[0];
-               //string dateValue = String.Format("yyyy-MM-dd",item[0].ToString());
+                string dateValue = item[0].ToString().Replace("/","-").ToString().Split(' ')[0];
+                //string dateValue = String.Format("yyyy-MM-dd",item[0].ToString());
                 //dateValue=DateTime.ParseExact(dateValue, "yyyy-MM-dd", null).ToString("yyyy-M-d");//本地可用
                 string dateText = dateValue;
                 leftDateBuilder.Append(string.Format("<option value=\'{0}\'>{1}</option>",dateValue,dateValue));
