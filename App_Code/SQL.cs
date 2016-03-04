@@ -16,6 +16,26 @@ public class SQL
         
     }
 
+    public static bool IsInputPhone(int uid)
+    {
+        bool isNotNeed = false;
+        int count = 0;
+        if (uid <= 0) return isNotNeed;
+        using (SqlConnection conn = new SqlConnection(connStr))
+        {
+            conn.Open();
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.CommandText = "select count(*) from dbo.tb_UserPhone where userId="+uid;
+                cmd.Connection = conn;
+                count = (int)cmd.ExecuteScalar();
+            }
+        }
+        isNotNeed = count > 0 ? true : false;//True即表示已经存在，无需录入
+        return isNotNeed;
+    }
+
+
     public static int ExcuteProcedureScalar(string procedureName,params SqlParameter[] para)
     {
         if (string.IsNullOrEmpty(procedureName)) return -1;

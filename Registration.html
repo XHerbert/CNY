@@ -74,9 +74,7 @@
         <option value="2016-2-5">2016-2-5</option>
         <option value="2016-2-6">2016-2-6</option>-->
             <!--</select>-->
-        <script type="text/javascript">
-
-        </script>
+      
 
 </div>
     <div class="c2"><p>剩余可报名次数：<span id="leftC"></span>/<span id="a_c"></span>次</p></div>
@@ -119,5 +117,22 @@
             format: 'yyyy-mm-dd'
         });
     </script>-->
+    <script type="text/javascript">
+            var args = window.document.location.href;
+            var myargs = args.split('?');
+            var param = myargs[1];
+            //alert(uid);
+            var uid = param.split('=')[1];
+            var data={"uid":uid};
+            $.post(
+                    "server/QueryPhoneHandler.ashx", data, function (msg) {
+                        if (msg == "block") {
+                            $("#phone").css("display", "block");
+                        } else {
+                            $("#phone").css("display", "none");
+                        }
+                    }
+                );
+    </script>
 </body>
 </html>

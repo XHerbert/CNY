@@ -30,7 +30,7 @@ public class LoginHandler : IHttpHandler,System.Web.SessionState.IRequiresSessio
             if (i > 0)
             {
                 context.Session["user"] = SQL.GetIDs(u);
-                context.Response.Write("SUCCESS");
+                context.Response.Write(SQL.GetIDs(u));
             }
             else
             {

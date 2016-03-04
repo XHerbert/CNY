@@ -201,10 +201,10 @@ function login() {
     data = { "username": un, "password": pw };
     $.post("../server/LoginHandler.ashx", data, function (msg) {
 
-        if (msg == "SUCCESS") {
+        if (msg != "FAIL") {
             //$(".div-b p").html("OK！");
             //noteMsg();
-            document.location.href = "Registration.html";
+            document.location.href = "Registration.html?u="+msg;
         } else if (msg == "FAIL") {
             $(".div-b p").html("员工号或密码错误！");
             noteMsg();
